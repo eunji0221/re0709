@@ -21,10 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ('SECRET_KYE','django-insecure-*d21wxb$66=-^^-c$c@i0lif_&szceta+ii%8-4vsm!j$4*fw7')
-
+SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-*d21wxb$66=-^^-c$c@i0lif_&szceta+ii%8-4vsm!j$4*fw7')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG', 'True') != 'False')
 
 ALLOWED_HOSTS = []
 
@@ -127,5 +126,9 @@ MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
- 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID ='AKIA4QBKERC3V2W3FL76'
+AWS_SECRET_ACCESS_KEY ='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'
+AWS_STORAGE_BUCKET_NAME = 'maru0720' 
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-northeast-2'
